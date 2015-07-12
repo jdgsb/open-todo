@@ -5,3 +5,31 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+ require 'faker'
+
+#create users
+3.times do
+  user = User.new(
+    username: Faker::Lorem.characters(6),
+    password: Faker::Lorem.characters(10)
+    )
+  user.save!
+end
+
+#create items
+50.times do
+   List.create!(
+     name:  Faker::Lorem.sentence,
+   )
+ end
+
+  100.times do
+   Item.create!(
+     post: posts.sample,
+     body: Faker::Lorem.paragraph
+   )
+ end
+
+puts "3 users created"
+puts "50 lists created"
+puts "100 items created"
