@@ -25,8 +25,7 @@ end
 
   100.times do
    Item.create!(
-     post: posts.sample,
-     body: Faker::Lorem.paragraph
+     description: Faker::Lorem.paragraph
    )
  end
 

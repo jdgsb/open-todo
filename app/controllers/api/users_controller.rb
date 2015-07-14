@@ -3,7 +3,7 @@ class Api::UsersController < ApiController
 
   def index
     users = User.all
-    render json: users
+    render json: users, each_serializer: UserSerializer 
   end
 
   def create
@@ -11,7 +11,7 @@ class Api::UsersController < ApiController
     if user.save
       render json: user, status: 201
     else
-      render json: {}, status: 422
+      render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
     end
   end
 

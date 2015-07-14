@@ -13,7 +13,7 @@ class Api::ItemsController < ApiController
   end
 
   def update
-    # list = List.find(params[:list_id])
+    list = List.find(params[:list_id])
     item = Item.find(params[:id])
     if (current_user == item.list.user) && item.update(item_params)
       render json: item, status: 200
