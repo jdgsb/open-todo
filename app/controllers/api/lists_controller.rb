@@ -26,7 +26,7 @@ class Api::ListsController < ApiController
     if list.update(list_params)
       render json: list, status: 200
     else
-      render json: {}, status: 422
+      render json: { errors: list.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
