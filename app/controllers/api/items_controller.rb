@@ -22,6 +22,17 @@ class Api::ItemsController < ApiController
     end
   end
 
+  def complete
+    description = params[:item][:description]
+    items = Item.where(description: description)
+    if items.first && items.first.update_attributes(completed: true)
+      render json: items.first, status: 200
+    else
+      render json: {}, status: 422
+    end
+
+  end
+
   private
 
   def item_params
